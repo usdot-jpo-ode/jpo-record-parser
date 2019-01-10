@@ -21,6 +21,9 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import us.dot.its.jpo.ingest.parsers.FileParser.FileParserException;
+import us.dot.its.jpo.ingest.pojos.Record;
+
 public abstract class LogFileParser implements FileParser {
    
    // TODO - ripped from OdeLogMetadata class
@@ -186,6 +189,11 @@ public abstract class LogFileParser implements FileParser {
 
    public void setPayloadParser(PayloadParser payloadParser) {
       this.payloadParser = payloadParser;
+   }
+   
+   @Override
+   public Record getCurrentRecord() throws FileParserException {
+      throw new FileParserException(this.getClass().getSimpleName() + " is not appropriate for sending full records");
    }
 
 }

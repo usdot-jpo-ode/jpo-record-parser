@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  ******************************************************************************/
-package us.dot.its.jpo.ingest.parsers;
+package us.dot.its.jpo.ingest.pojos;
 
 /**
  * POJO class for TIM log file location data

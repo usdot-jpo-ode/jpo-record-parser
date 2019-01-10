@@ -21,6 +21,8 @@ import java.time.ZonedDateTime;
 
 import us.dot.its.jpo.ingest.codec.utils.CodecUtils;
 import us.dot.its.jpo.ingest.codec.utils.DateTimeUtils;
+import us.dot.its.jpo.ingest.parsers.FileParser.FileParserException;
+import us.dot.its.jpo.ingest.pojos.Record;
 
 public class TimeParser extends LogFileParser {
 
@@ -85,5 +87,10 @@ public class TimeParser extends LogFileParser {
 
    public ZonedDateTime getGeneratedAt() {
       return DateTimeUtils.isoDateTime(getUtcTimeInSec() * 1000 + getmSec());
+   }
+   
+   @Override
+   public Record getCurrentRecord() throws FileParserException {
+      throw new FileParserException("PayloadParser cannot return full records");
    }
 }

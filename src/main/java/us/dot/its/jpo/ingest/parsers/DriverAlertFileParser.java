@@ -17,6 +17,10 @@ package us.dot.its.jpo.ingest.parsers;
 
 import java.io.BufferedInputStream;
 
+import us.dot.its.jpo.ingest.parsers.FileParser.FileParserException;
+import us.dot.its.jpo.ingest.pojos.ReceivedMsgRecord;
+import us.dot.its.jpo.ingest.pojos.Record;
+
 public class DriverAlertFileParser extends LogFileParser {
 
    private String alert;
@@ -72,6 +76,17 @@ public class DriverAlertFileParser extends LogFileParser {
 
    public void setAlert(byte[] alert) {
       this.alert = new String(alert);
+   }
+   
+   @Override
+   public Record getCurrentRecord() throws FileParserException {
+      ReceivedMsgRecord curRecord = new ReceivedMsgRecord();
+      curRecord.setLength(this.payloadParser.getPayloadLength());
+      curRecord.setLogLocation(this.locationParser.getLocation());
+      curRecord.setMsec(this.timeParser.getmSec());
+      curRecord.setPayload(this.payloadParser.getPayload());
+      curRecord.setUtcTimeInSec(this.timeParser.getUtcTimeInSec());
+      return curRecord;
    }
 
 }

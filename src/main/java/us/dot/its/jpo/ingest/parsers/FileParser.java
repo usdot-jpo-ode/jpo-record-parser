@@ -17,6 +17,8 @@ package us.dot.its.jpo.ingest.parsers;
 
 import java.io.BufferedInputStream;
 
+import us.dot.its.jpo.ingest.pojos.Record;
+
 public interface FileParser {
 
    public static class FileParserException extends Exception {
@@ -37,4 +39,6 @@ public interface FileParser {
    }
 
    public ParserStatus parseFile(BufferedInputStream bis, String fileName) throws FileParserException;
+
+   public Record getCurrentRecord() throws FileParserException;
 }

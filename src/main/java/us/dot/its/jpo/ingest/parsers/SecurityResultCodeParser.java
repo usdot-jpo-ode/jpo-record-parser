@@ -20,6 +20,9 @@ import java.io.BufferedInputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import us.dot.its.jpo.ingest.parsers.FileParser.FileParserException;
+import us.dot.its.jpo.ingest.pojos.Record;
+
 public class SecurityResultCodeParser extends LogFileParser {
    
    // TODO - ripped from OdeLogMetadata
@@ -113,5 +116,4 @@ public class SecurityResultCodeParser extends LogFileParser {
          setSecurityResultCode(SecurityResultCode.unknown);
       }
    }
-
 }

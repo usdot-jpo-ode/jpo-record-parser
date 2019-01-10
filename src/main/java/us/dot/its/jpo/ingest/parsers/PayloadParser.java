@@ -20,6 +20,7 @@ import java.nio.ByteOrder;
 import java.util.Arrays;
 
 import us.dot.its.jpo.ingest.codec.utils.CodecUtils;
+import us.dot.its.jpo.ingest.pojos.Record;
 
 public class PayloadParser extends LogFileParser {
 
@@ -80,6 +81,11 @@ public class PayloadParser extends LogFileParser {
    public LogFileParser setPayload(byte[] payload) {
       this.payload = payload;
       return this;
+   }
+
+   @Override
+   public Record getCurrentRecord() throws FileParserException {
+      throw new FileParserException("PayloadParser cannot return full records");
    }
 
 }
