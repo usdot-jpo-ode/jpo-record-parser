@@ -83,9 +83,4 @@ public class PayloadParser extends LogFileParser {
       return this;
    }
 
-   @Override
-   public Record getCurrentRecord() throws FileParserException {
-      throw new FileParserException("PayloadParser cannot return full records");
-   }
-
 }

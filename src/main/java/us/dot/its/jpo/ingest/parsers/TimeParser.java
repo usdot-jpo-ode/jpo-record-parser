@@ -88,9 +88,4 @@ public class TimeParser extends LogFileParser {
    public ZonedDateTime getGeneratedAt() {
       return DateTimeUtils.isoDateTime(getUtcTimeInSec() * 1000 + getmSec());
    }
-   
-   @Override
-   public Record getCurrentRecord() throws FileParserException {
-      throw new FileParserException("PayloadParser cannot return full records");
-   }
 }
