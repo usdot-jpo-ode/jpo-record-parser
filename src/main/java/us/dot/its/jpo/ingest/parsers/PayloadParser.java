@@ -20,6 +20,7 @@ import java.nio.ByteOrder;
 import java.util.Arrays;
 
 import us.dot.its.jpo.ingest.codec.utils.CodecUtils;
+import us.dot.its.jpo.ingest.pojos.Record;
 
 public class PayloadParser extends LogFileParser {
 

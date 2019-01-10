@@ -20,6 +20,10 @@ import java.io.BufferedInputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import us.dot.its.jpo.ingest.parsers.FileParser.FileParserException;
+import us.dot.its.jpo.ingest.pojos.ReceivedMsgRecord;
+import us.dot.its.jpo.ingest.pojos.Record;
+
 public class RxMsgFileParser extends LogFileParser {
    
    // TODO - ripped from ODE RxSource class in core/common
@@ -109,5 +113,16 @@ public class RxMsgFileParser extends LogFileParser {
             rxSourceOrdinal, RxSource.values());
          setRxSource(RxSource.unknown);
       }
+   }
+   
+   @Override
+   public Record getCurrentRecord() throws FileParserException {
+      ReceivedMsgRecord curRecord = new ReceivedMsgRecord();
+      curRecord.setLength(this.payloadParser.getPayloadLength());
+      curRecord.setLogLocation(this.locationParser.getLocation());
+      curRecord.setMsec(this.timeParser.getmSec());
+      curRecord.setPayload(this.payloadParser.getPayload());
+      curRecord.setUtcTimeInSec(this.timeParser.getUtcTimeInSec());
+      return curRecord;
    }
 }

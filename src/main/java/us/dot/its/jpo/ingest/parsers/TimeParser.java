@@ -21,6 +21,8 @@ import java.time.ZonedDateTime;
 
 import us.dot.its.jpo.ingest.codec.utils.CodecUtils;
 import us.dot.its.jpo.ingest.codec.utils.DateTimeUtils;
+import us.dot.its.jpo.ingest.parsers.FileParser.FileParserException;
+import us.dot.its.jpo.ingest.pojos.Record;
 
 public class TimeParser extends LogFileParser {
 

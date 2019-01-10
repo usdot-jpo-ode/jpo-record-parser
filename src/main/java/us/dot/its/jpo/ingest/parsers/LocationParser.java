@@ -19,6 +19,7 @@ import java.io.BufferedInputStream;
 import java.nio.ByteOrder;
 
 import us.dot.its.jpo.ingest.codec.utils.CodecUtils;
+import us.dot.its.jpo.ingest.pojos.LogLocation;
 
 public class LocationParser extends LogFileParser {
 
